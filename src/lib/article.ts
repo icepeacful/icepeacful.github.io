@@ -4,9 +4,9 @@ import matter from 'gray-matter';
 import html from 'remark-html';
 import { remark } from 'remark';
 import { readAllFilesInDirectory } from './file';
+import { ARTICLES_PER_PAGE } from '@/config/const';
 
 const articlesPath = path.join(process.cwd(), 'content/articles');
-const ARTICLES_PER_PAGE = 5;
 
 export function getPaginatedArticles(page: number) {
   const allArticles = getArticlesMetaData();

@@ -3,12 +3,11 @@ import { getPaginatedArticles, getArticlesMetaData } from '@/lib/article';
 import { ContentBlock } from '@/components/ContentBlock';
 import { redirect } from 'next/navigation';
 import { Pagination } from '@/components/Pagination';
-
-const POSTS_PER_PAGE = 5;
+import { ARTICLES_PER_PAGE } from '@/config/const';
 
 export async function generateStaticParams() {
   const allPosts = getArticlesMetaData();
-  const totalPages = Math.ceil(allPosts.length / POSTS_PER_PAGE);
+  const totalPages = Math.ceil(allPosts.length / ARTICLES_PER_PAGE);
 
   return Array.from({ length: totalPages }, (_, i) => ({
     page: (i + 1).toString(),
