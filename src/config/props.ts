@@ -5,3 +5,8 @@ export interface ContentBlockProps {
     date: string;
     category: string;
 }
+
+export interface PaginationProps {
+    totalPages: number;
+    currentPage: number;
+}
