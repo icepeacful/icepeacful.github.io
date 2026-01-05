@@ -1,7 +1,7 @@
 ---
 id: "001-novel"
 title: "夜行路"
-excerpt: ""
+excerpt: "我喜欢在黑夜的街道上漫步。"
 date: "2026-01-04"
 category: "novel"
 ---
