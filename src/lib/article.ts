@@ -6,6 +6,22 @@ import { remark } from 'remark';
 import { readAllFilesInDirectory } from './file';
 
 const articlesPath = path.join(process.cwd(), 'content/articles');
+const ARTICLES_PER_PAGE = 5;
+
+export function getPaginatedArticles(page: number) {
+  const allArticles = getArticlesMetaData();
+  const totalArticles = allArticles.length;
+  const totalPages = Math.ceil(totalArticles / ARTICLES_PER_PAGE);
+
+  const offset = (page - 1) * ARTICLES_PER_PAGE;
+  const articles = allArticles.slice(offset, offset + ARTICLES_PER_PAGE);
+
+  return {
+    articles,
+    totalPages,
+    currentPage: page
+  };
+}
 
 export function getArticlesMetaData() {
   const files = readAllFilesInDirectory(articlesPath);
@@ -19,6 +35,7 @@ export function getArticlesMetaData() {
     const fileContents = fs.readFileSync(file, 'utf8');
 
     const matterResult = matter(fileContents);
+    matterResult.data.excerpt = matterResult.data.excerpt === '' ? matterResult.content.slice(0, 40) + "..." : matterResult.data.excerpt;
 
     return {
       id,
