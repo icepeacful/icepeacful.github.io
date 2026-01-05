@@ -13,7 +13,7 @@ const ContentBlock: React.FC<{ props: ContentBlockProps }> = ({ props }) => {
                 <h3 className="text-2xl font-semibold mt-2 group-hover:text-blue-600 transition-colors">
                     {props.title}
                 </h3>
-                <p className="mt-3 text-gray-500 leading-relaxed max-w-2xl">
+                <p className="mt-3 text-gray-500 leading-relaxed max-w-2xl whitespace-pre-wrap">
                     {props.excerpt}
                 </p>
                 </div>
